@@ -35,6 +35,14 @@
       h5 {
         text-transform: none !important;
       }
+
+      .small {
+        font-size: 0.7em;
+      }
+
+      .highlight {
+        background-color: rgb(159, 147, 55);
+      }
     </style>
   </head>
 
@@ -42,7 +50,7 @@
     <div class="reveal">
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
-        <section>
+        <section data-transition="convex-out">
           <svg
             class="logo_color"
             width="250"
@@ -111,34 +119,177 @@
         </section>
 
         <section>
-          <h3>What is a Methodology?</h3>
-          <img
-            data-fragment-index="1"
-            class="fragment shrink"
-            width="500"
-            src="https://images.unsplash.com/photo-1550418290-a8d86ad674a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-          />
+          <section data-transition="convex">
+            <h2>
+              Headless UI is a <u style="font-style: italic">Methodology</u>
+            </h2>
+          </section>
 
-          <small>
-            <ul>
-              <li class="fragment fade-right" data-fragment-index="1">
-                Why are methodologies important?
-              </li>
-              <li class="fragment fade-left">What do they offer?</li>
-              <li class="fragment fade-up">
-                How do we compare one to another?
-              </li>
-              <li class="fragment fade-right">
-                How do we know we chose on the right one?
-              </li>
-            </ul>
-          </small>
+          <section data-transition="convex">
+            <h3>What is a Methodology?</h3>
+            <small>
+              <ul>
+                <li class="fragment fade-down" data-fragment-index="1">
+                  What makes a methodology a good one?
+                </li>
+                <li class="fragment fade-left" data-fragment-index="1">
+                  How do we compare one to another?
+                </li>
+                <li class="fragment fade-right" data-fragment-index="1">
+                  How do we know we chose the right one?
+                </li>
+              </ul>
+            </small>
+            <img
+              data-fragment-index="1"
+              class="fragment shrink"
+              width="500"
+              src="https://images.unsplash.com/photo-1550418290-a8d86ad674a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            />
 
-          <aside class="notes">
-            <ul>
-              <li>Why are methodologies important?</li>
+            <aside class="notes">
+              <ul>
+                <li>Why are methodologies important?</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section
+            data-transition-speed="fast"
+            data-transition="convex-in fade-out"
+          >
+            <h2>Separation of Concerns</h2>
+
+            <p class="small fragment fade-down" data-fragment-index="1">
+              <q
+                >This is what I mean by 'focusing one's attention upon some
+                aspect': it does not mean ignoring the other aspects, it is just
+                doing justice to the fact that from this aspect's point of view,
+                the other is irrelevant. It is being one- and multiple-track
+                minded simultaneously.</q
+              ><br /><br />
+              <span class="small">
+                - by Edsger W. Dijkstra in his 1974 paper "On the Role of
+                Scientific Thought"
+              </span>
+            </p>
+          </section>
+
+          <section data-transition-speed="fast" data-transition="fade">
+            <h3>Internet Protocol Suite</h3>
+
+            <img
+              width="500"
+              src="https://s7280.pcdn.co/wp-content/uploads/2018/06/osi-model-7-layers-1024x734.jpg"
+            />
+          </section>
+
+          <section data-transition-speed="fast" data-transition="fade">
+            <h3>Web Apps!</h3>
+
+            <img
+              width="500"
+              src="https://www.1training.org/wp-content/uploads/2017/10/6.png"
+            />
+          </section>
+
+          <section data-transition-speed="fast" data-transition="fade">
+            <h3>Aspect-Oriented Programming</h3>
+            <div class="small">Cross-Cutting Concerns</div>
+
+            <hr class="fragment" data-fragment-index="1" />
+            <ul class="small fragment" data-fragment-index="1">
+              <li>Caching</li>
+              <li>Data Validation</li>
+              <li>Logging</li>
+              <li>Security</li>
+              <li>Monitoring</li>
+              <li>Synchronization</li>
+              <li>Internationalization/Localization</li>
+              <li>Etc...</li>
             </ul>
-          </aside>
+          </section>
+
+          <section>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs" data-trim data-line-numbers>
+            <script type="text/template">
+class Foo {
+  private piCache = new Map<number, string>();
+
+  public computePi(sigFig: number) {
+    if (piCache.has(sigFig)) {
+      return piCache.get(sigFig);
+    }
+
+    // complex code that takes a long time
+    
+    piCache.set(sigFig, piToSigFig);
+  }
+}
+          </script>
+					</code></pre>
+            <aside class="notes">
+              Is this method only focused on computing Pi?
+            </aside>
+          </section>
+
+          <section>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs" data-trim data-line-numbers>
+            <script type="text/template">
+class Foo {
+  private piCache = new Map<number, string>();
+  private eCache = new Map<number, string>();
+
+  public computePi(sigFig: number) {
+    if (piCache.has(sigFig)) {
+      return piCache.get(sigFig);
+    }
+
+    // complex code that takes a long time
+    
+    piCache.set(sigFig, piToSigFig);
+  }
+
+  public computeE(sigFig: number) {
+    if (eCache.has(sigFig)) {
+      return eCache.get(sigFig);
+    }
+
+    // complex code that takes a long time
+    
+    eCache.set(sigFig, piToSigFig);
+  }
+}
+          </script>
+					</code></pre>
+          </section>
+
+          <section>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs" data-trim data-line-numbers>
+            <script type="text/template">
+class Foo {
+  
+  @Memoize()
+  public computePi(sigFig: number) {
+    // complex code that takes a long time
+  }
+
+  @Memoize()
+  public computeE(sigFig: number) {
+    // complex code that takes a long time
+  }
+}
+          </script>
+					</code></pre>
+          </section>
         </section>
 
         <section data-auto-animate>
