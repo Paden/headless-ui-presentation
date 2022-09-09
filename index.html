@@ -1,40 +1,769 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
 
-		<title>reveal.js</title>
+    <title>Headless UI</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+    <meta name="description" content="A simple methodology" />
+    <meta name="author" content="Paden Portillo" />
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+    <link
+      rel="icon"
+      href="https://www.brinqa.com/wp-content/themes/brinqa/assets/img/favicon.png"
+    />
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+    <style>
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        text-transform: none !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <svg
+            class="logo_color"
+            width="250"
+            height="75"
+            viewBox="0 0 142 43"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M61.4778 16.7146C62.4191 16.7146 63.2237 17.0414 63.8925 17.6936C64.5607 18.3467 64.895 19.1327 64.895 20.0516V29.374C64.895 30.2938 64.5607 31.0798 63.8925 31.7323C63.2237 32.3848 62.4191 32.711 61.4778 32.711H48.2034V11.4745H50.5195V16.7146H61.4778ZM62.579 29.3742V20.0519C62.579 19.7581 62.4703 19.5053 62.2541 19.2936C62.0375 19.0824 61.7784 18.9762 61.4775 18.9762H51.6487C51.3473 18.9762 51.0838 19.0824 50.8578 19.2936C50.6319 19.5053 50.5189 19.7581 50.5189 20.0519V29.3742C50.5189 29.6689 50.6319 29.9214 50.8578 30.1326C51.0838 30.3443 51.3473 30.4502 51.6487 30.4502H61.4775C61.7784 30.4502 62.0375 30.3443 62.2541 30.1326C62.4706 29.9214 62.579 29.6686 62.579 29.3742Z"
+              fill="#FFFFFF"
+            ></path>
+            <path
+              d="M70.4036 16.7147H79.6108V18.9763H70.4036C70.1024 18.9763 69.8433 19.0825 69.627 19.2936C69.4102 19.5054 69.3024 19.7582 69.3024 20.052V32.7114H66.9861V20.052C66.9861 19.133 67.3202 18.347 67.9883 17.694C68.6568 17.0415 69.4623 16.7147 70.4036 16.7147Z"
+              fill="#FFFFFF"
+            ></path>
+            <path
+              d="M81.4457 11.4744H83.7621V13.7361H81.4457V11.4744ZM81.4457 32.7112V16.7145H83.7621V32.7112H81.4457Z"
+              fill="#FFFFFF"
+            ></path>
+            <path
+              d="M100.228 16.7147C101.17 16.7147 101.974 17.0415 102.643 17.6937C103.311 18.3467 103.646 19.1328 103.646 20.0517V32.7111H101.329V20.052C101.329 19.7582 101.221 19.5054 101.004 19.2936C100.788 19.0825 100.529 18.9763 100.228 18.9763H90.3991C90.0979 18.9763 89.8341 19.0825 89.6085 19.2936C89.3822 19.5054 89.2692 19.7582 89.2692 20.052V32.7114H86.9535V16.7147H100.228Z"
+              fill="#FFFFFF"
+            ></path>
+            <path
+              d="M105.65 20.0525C105.65 19.1335 105.985 18.3475 106.653 17.6944C107.321 17.0422 108.136 16.7154 109.096 16.7154H122.342V39.0555H120.027V32.7118H109.096C108.136 32.7118 107.321 32.3856 106.653 31.7331C105.985 31.0806 105.65 30.2946 105.65 29.3748V20.0525ZM107.995 20.0525V29.3748C107.995 29.6695 108.102 29.922 108.319 30.1331C108.536 30.3449 108.795 30.4507 109.096 30.4507H118.925C119.226 30.4507 119.485 30.3449 119.701 30.1331C119.918 29.922 120.027 29.6695 120.027 29.3748V20.0525C120.027 19.7586 119.918 19.5058 119.701 19.2941C119.485 19.0829 119.226 18.9768 118.925 18.9768H109.096C108.795 18.9768 108.536 19.0829 108.319 19.2941C108.102 19.5058 107.995 19.7586 107.995 20.0525Z"
+              fill="#FFFFFF"
+            ></path>
+            <path
+              d="M138.553 16.7147C139.513 16.7147 140.327 17.0415 140.996 17.6937C141.664 18.3467 141.999 19.1328 141.999 20.0517V32.7111H128.724C127.782 32.7111 126.978 32.3848 126.31 31.7324C125.641 31.0799 125.307 30.2939 125.307 29.3741V23.5821H139.654V20.052C139.654 19.7582 139.546 19.5054 139.329 19.2936C139.113 19.0825 138.854 18.9763 138.553 18.9763H125.307V16.7147H138.553ZM139.654 30.45V25.844H127.622V29.3743C127.622 29.669 127.731 29.9215 127.948 30.1327C128.164 30.3444 128.423 30.4503 128.724 30.4503H139.654V30.45Z"
+              fill="#FFFFFF"
+            ></path>
+            <path
+              d="M5.72071 14.3558C5.72071 14.3603 5.72071 14.3647 5.72071 14.3692V14.4913V29.138L18.8783 36.5358V42.982L0 32.3678V11.1394L5.72071 14.3558Z"
+              fill="#5BB058"
+            ></path>
+            <path
+              d="M18.8751 30.7192L10.9044 26.2378V17.2747L18.8751 21.7564V30.7192Z"
+              fill="#5BB058"
+            ></path>
+            <path
+              d="M11.1909 16.7161L19.1676 12.2476L27.1325 16.7161L19.1616 21.1978L11.1909 16.7161Z"
+              fill="#A0C453"
+            ></path>
+            <path
+              d="M38.0376 10.5812L19.1129 0L10.8253 4.73616C10.8319 6.88498 10.8385 9.03351 10.8448 11.1823L19.1321 6.44616L32.3166 13.7976L38.0376 10.5812Z"
+              fill="#A0C453"
+            ></path>
+            <path
+              d="M0.114014 10.5233L5.72546 13.6257V7.3457L0.114014 10.5233Z"
+              fill="#A0C453"
+            ></path>
+            <path
+              d="M38.3248 11.1394V32.3678L19.4464 42.982V36.5358L32.604 29.138V14.4913V14.3692C32.604 14.3647 32.604 14.3603 32.604 14.3558L38.3248 11.1394Z"
+              fill="#2D8142"
+            ></path>
+            <path
+              d="M19.4489 30.7192L27.4195 26.2378V17.2747L19.4489 21.7564V30.7192Z"
+              fill="#2D8142"
+            ></path>
+          </svg>
+          <h2 style="margin: 100px 0">Headless UI</h2>
+          <p>
+            <small>by Paden Portillo</small>
+          </p>
+        </section>
+
+        <section>
+          <h3>What is a Methodology?</h3>
+          <img
+            data-fragment-index="1"
+            class="fragment shrink"
+            width="500"
+            src="https://images.unsplash.com/photo-1550418290-a8d86ad674a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+          />
+
+          <small>
+            <ul>
+              <li class="fragment fade-right" data-fragment-index="1">
+                Why are methodologies important?
+              </li>
+              <li class="fragment fade-left">What do they offer?</li>
+              <li class="fragment fade-up">
+                How do we compare one to another?
+              </li>
+              <li class="fragment fade-right">
+                How do we know we chose on the right one?
+              </li>
+            </ul>
+          </small>
+
+          <aside class="notes">
+            <ul>
+              <li>Why are methodologies important?</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section data-auto-animate>
+          <h2 data-id="code-title">Pretty Code</h2>
+          <pre
+            data-id="code-animation"
+          ><code class="hljs" data-trim data-line-numbers>
+						import React, { useState } from 'react';
+
+						function Example() {
+						  const [count, setCount] = useState(0);
+
+						  return (
+						    ...
+						  );
+						}
+					</code></pre>
+          <p>
+            Code syntax highlighting courtesy of
+            <a href="https://highlightjs.org/usage/">highlight.js</a>.
+          </p>
+        </section>
+
+        <section data-auto-animate>
+          <h2 data-id="code-title">With animations</h2>
+          <pre
+            data-id="code-animation"
+          ><code class="hljs" data-trim data-line-numbers="|4,8-11|17|22-24"><script type="text/template">
+						import React, { useState } from 'react';
+
+						function Example() {
+						  const [count, setCount] = useState(0);
+
+						  return (
+						    <div>
+						      <p>You clicked {count} times</p>
+						      <button onClick={() => setCount(count + 1)}>
+						        Click me
+						      </button>
+						    </div>
+						  );
+						}
+
+						function SecondExample() {
+						  const [count, setCount] = useState(0);
+
+						  return (
+						    <div>
+						      <p>You clicked {count} times</p>
+						      <button onClick={() => setCount(count + 1)}>
+						        Click me
+						      </button>
+						    </div>
+						  );
+						}
+					</script></code></pre>
+        </section>
+
+        <section
+          data-auto-animate
+          data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+        >
+          <h2>Auto-Animate</h2>
+          <p>
+            Automatically animate matching elements across slides with
+            <a href="https://revealjs.com/auto-animate/">Auto-Animate</a>.
+          </p>
+          <div class="r-hstack justify-center">
+            <div
+              data-id="box1"
+              style="
+                background: #999;
+                width: 50px;
+                height: 50px;
+                margin: 10px;
+                border-radius: 5px;
+              "
+            ></div>
+            <div
+              data-id="box2"
+              style="
+                background: #999;
+                width: 50px;
+                height: 50px;
+                margin: 10px;
+                border-radius: 5px;
+              "
+            ></div>
+            <div
+              data-id="box3"
+              style="
+                background: #999;
+                width: 50px;
+                height: 50px;
+                margin: 10px;
+                border-radius: 5px;
+              "
+            ></div>
+          </div>
+        </section>
+
+        <section
+          data-auto-animate
+          data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+        >
+          <div class="r-hstack justify-center">
+            <div
+              data-id="box1"
+              data-auto-animate-delay="0"
+              style="
+                background: cyan;
+                width: 150px;
+                height: 100px;
+                margin: 10px;
+              "
+            ></div>
+            <div
+              data-id="box2"
+              data-auto-animate-delay="0.1"
+              style="
+                background: magenta;
+                width: 150px;
+                height: 100px;
+                margin: 10px;
+              "
+            ></div>
+            <div
+              data-id="box3"
+              data-auto-animate-delay="0.2"
+              style="
+                background: yellow;
+                width: 150px;
+                height: 100px;
+                margin: 10px;
+              "
+            ></div>
+          </div>
+          <h2 style="margin-top: 20px">Auto-Animate</h2>
+        </section>
+
+        <section
+          data-auto-animate
+          data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+        >
+          <div class="r-stack">
+            <div
+              data-id="box1"
+              style="
+                background: cyan;
+                width: 300px;
+                height: 300px;
+                border-radius: 200px;
+              "
+            ></div>
+            <div
+              data-id="box2"
+              style="
+                background: magenta;
+                width: 200px;
+                height: 200px;
+                border-radius: 200px;
+              "
+            ></div>
+            <div
+              data-id="box3"
+              style="
+                background: yellow;
+                width: 100px;
+                height: 100px;
+                border-radius: 200px;
+              "
+            ></div>
+          </div>
+          <h2 style="margin-top: 20px">Auto-Animate</h2>
+        </section>
+
+        <section>
+          <section id="">
+            <h2>Fragments</h2>
+            <p>Hit the next arrow...</p>
+            <p class="fragment">... to step through ...</p>
+            <p>
+              <span class="fragment">... a</span>
+              <span class="fragment">fragmented</span>
+              <span class="fragment">slide.</span>
+            </p>
+
+            <aside class="notes">
+              This slide has fragments which are also stepped through in the
+              notes window.
+            </aside>
+          </section>
+          <section>
+            <h2>Fragment Styles</h2>
+            <p>There's different types of fragments, like:</p>
+            <p class="fragment grow">grow</p>
+            <p class="fragment shrink">shrink</p>
+            <p class="fragment fade-out">fade-out</p>
+            <p>
+              <span style="display: inline-block" class="fragment fade-right"
+                >fade-right,
+              </span>
+              <span style="display: inline-block" class="fragment fade-up"
+                >up,
+              </span>
+              <span style="display: inline-block" class="fragment fade-down"
+                >down,
+              </span>
+              <span style="display: inline-block" class="fragment fade-left"
+                >left</span
+              >
+            </p>
+            <p class="fragment fade-in-then-out">fade-in-then-out</p>
+            <p class="fragment fade-in-then-semi-out">fade-in-then-semi-out</p>
+            <p>
+              Highlight <span class="fragment highlight-red">red</span>
+              <span class="fragment highlight-blue">blue</span>
+              <span class="fragment highlight-green">green</span>
+            </p>
+          </section>
+        </section>
+
+        <section id="transitions">
+          <h2>Transition Styles</h2>
+          <p>
+            You can select from different transitions, like: <br />
+            <a href="?transition=none#/transitions">None</a> -
+            <a href="?transition=fade#/transitions">Fade</a> -
+            <a href="?transition=slide#/transitions">Slide</a> -
+            <a href="?transition=convex#/transitions">Convex</a> -
+            <a href="?transition=concave#/transitions">Concave</a> -
+            <a href="?transition=zoom#/transitions">Zoom</a>
+          </p>
+        </section>
+
+        <section id="themes">
+          <h2>Themes</h2>
+          <p>
+            reveal.js comes with a few themes built in: <br />
+            <!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+            <a
+              href="#"
+              onclick="document.getElementById('theme').setAttribute('href','dist/theme/black.css'); return false;"
+              >Black (default)</a
+            >
+            -
+            <a
+              href="#"
+              onclick="document.getElementById('theme').setAttribute('href','dist/theme/white.css'); return false;"
+              >White</a
+            >
+            -
+            <a
+              href="#"
+              onclick="document.getElementById('theme').setAttribute('href','dist/theme/league.css'); return false;"
+              >League</a
+            >
+            -
+            <a
+              href="#"
+              onclick="document.getElementById('theme').setAttribute('href','dist/theme/sky.css'); return false;"
+              >Sky</a
+            >
+            -
+            <a
+              href="#"
+              onclick="document.getElementById('theme').setAttribute('href','dist/theme/beige.css'); return false;"
+              >Beige</a
+            >
+            -
+            <a
+              href="#"
+              onclick="document.getElementById('theme').setAttribute('href','dist/theme/simple.css'); return false;"
+              >Simple</a
+            >
+            <br />
+            <a
+              href="#"
+              onclick="document.getElementById('theme').setAttribute('href','dist/theme/serif.css'); return false;"
+              >Serif</a
+            >
+            -
+            <a
+              href="#"
+              onclick="document.getElementById('theme').setAttribute('href','dist/theme/blood.css'); return false;"
+              >Blood</a
+            >
+            -
+            <a
+              href="#"
+              onclick="document.getElementById('theme').setAttribute('href','dist/theme/night.css'); return false;"
+              >Night</a
+            >
+            -
+            <a
+              href="#"
+              onclick="document.getElementById('theme').setAttribute('href','dist/theme/moon.css'); return false;"
+              >Moon</a
+            >
+            -
+            <a
+              href="#"
+              onclick="document.getElementById('theme').setAttribute('href','dist/theme/solarized.css'); return false;"
+              >Solarized</a
+            >
+          </p>
+        </section>
+
+        <section>
+          <section data-background="#dddddd">
+            <h2>Slide Backgrounds</h2>
+            <p>
+              Set <code>data-background="#dddddd"</code> on a slide to change
+              the background color. All CSS color formats are supported.
+            </p>
+            <a href="#" class="navigate-down">
+              <img
+                class="r-frame"
+                style="background: rgba(255, 255, 255, 0.1)"
+                width="178"
+                height="238"
+                data-src="https://static.slid.es/reveal/arrow.png"
+                alt="Down arrow"
+              />
+            </a>
+          </section>
+          <section
+            data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)"
+          >
+            <h2>Gradient Backgrounds</h2>
+            <pre><code class="hljs html wrap">&lt;section data-background-gradient=
+							"linear-gradient(to bottom, #ddd, #191919)"&gt;</code></pre>
+          </section>
+          <section
+            data-background="https://static.slid.es/reveal/image-placeholder.png"
+          >
+            <h2>Image Backgrounds</h2>
+            <pre><code class="hljs html">&lt;section data-background="image.png"&gt;</code></pre>
+          </section>
+          <section
+            data-background="https://static.slid.es/reveal/image-placeholder.png"
+            data-background-repeat="repeat"
+            data-background-size="100px"
+          >
+            <h2>Tiled Backgrounds</h2>
+            <pre><code class="hljs html" style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
+          </section>
+          <section
+            data-background-video="https://static.slid.es/site/homepage/v1/homepage-video-editor.mp4"
+            data-background-color="#000000"
+          >
+            <div
+              style="
+                background-color: rgba(0, 0, 0, 0.9);
+                color: #fff;
+                padding: 20px;
+              "
+            >
+              <h2>Video Backgrounds</h2>
+              <pre><code class="hljs html" style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
+            </div>
+          </section>
+          <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+            <h2>... and GIFs!</h2>
+          </section>
+        </section>
+
+        <section
+          data-transition="slide"
+          data-background="#4d7e65"
+          data-background-transition="zoom"
+        >
+          <h2>Background Transitions</h2>
+          <p>
+            Different background transitions are available via the
+            backgroundTransition option. This one's called "zoom".
+          </p>
+          <pre><code class="hljs javascript">Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
+        </section>
+
+        <section
+          data-transition="slide"
+          data-background="#b5533c"
+          data-background-transition="zoom"
+        >
+          <h2>Background Transitions</h2>
+          <p>You can override background transitions per-slide.</p>
+          <pre><code class="hljs html" style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
+        </section>
+
+        <section
+          data-background-iframe="https://hakim.se"
+          data-background-interactive
+        >
+          <div
+            style="
+              position: absolute;
+              width: 40%;
+              right: 0;
+              box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5),
+                0 5px 25px rgba(0, 0, 0, 0.2);
+              background-color: rgba(0, 0, 0, 0.9);
+              color: #fff;
+              padding: 20px;
+              font-size: 20px;
+              text-align: left;
+            "
+          >
+            <h2>Iframe Backgrounds</h2>
+            <p>
+              Since reveal.js runs on the web, you can easily embed other web
+              content. Try interacting with the page in the background.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Marvelous List</h2>
+          <ul>
+            <li>No order here</li>
+            <li>Or here</li>
+            <li>Or here</li>
+            <li>Or here</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Fantastic Ordered List</h2>
+          <ol>
+            <li>One is smaller than...</li>
+            <li>Two is smaller than...</li>
+            <li>Three!</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>Tabular Tables</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Value</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Apples</td>
+                <td>$1</td>
+                <td>7</td>
+              </tr>
+              <tr>
+                <td>Lemonade</td>
+                <td>$2</td>
+                <td>18</td>
+              </tr>
+              <tr>
+                <td>Bread</td>
+                <td>$3</td>
+                <td>2</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2>Clever Quotes</h2>
+          <p>
+            These guys come in two forms, inline:
+            <q
+              cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations"
+              >The nice thing about standards is that there are so many to
+              choose from</q
+            >
+            and block:
+          </p>
+          <blockquote
+            cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations"
+          >
+            &ldquo;For years there has been a theory that millions of monkeys
+            typing at random on millions of typewriters would reproduce the
+            entire works of Shakespeare. The Internet has proven this theory to
+            be untrue.&rdquo;
+          </blockquote>
+        </section>
+
+        <section>
+          <h2>Intergalactic Interconnections</h2>
+          <p>
+            You can link between slides internally,
+            <a href="#/2/3">like this</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2>Speaker View</h2>
+          <p>
+            There's a
+            <a href="https://revealjs.com/speaker-view/">speaker view</a>. It
+            includes a timer, preview of the upcoming slide as well as your
+            speaker notes.
+          </p>
+          <p>Press the <em>S</em> key to try it out.</p>
+
+          <aside class="notes">
+            Oh hey, these are some notes. They'll be hidden in your
+            presentation, but you can see them if you open the speaker notes
+            window (hit 's' on your keyboard).
+          </aside>
+        </section>
+
+        <section>
+          <h2>Export to PDF</h2>
+          <p>
+            Presentations can be
+            <a href="https://revealjs.com/pdf-export/">exported to PDF</a>,
+            here's an example:
+          </p>
+          <iframe
+            data-src="https://www.slideshare.net/slideshow/embed_code/42840540"
+            width="445"
+            height="355"
+            frameborder="0"
+            marginwidth="0"
+            marginheight="0"
+            scrolling="no"
+            style="border: 3px solid #666; margin-bottom: 5px; max-width: 100%"
+            allowfullscreen
+          >
+          </iframe>
+        </section>
+
+        <section>
+          <h2>Global State</h2>
+          <p>
+            Set <code>data-state="something"</code> on a slide and
+            <code>"something"</code>
+            will be added as a class to the document element when the slide is
+            open. This lets you apply broader style changes, like switching the
+            page background.
+          </p>
+        </section>
+
+        <section data-state="customevent">
+          <h2>State Events</h2>
+          <p>
+            Additionally custom events can be triggered on a per slide basis by
+            binding to the <code>data-state</code> name.
+          </p>
+          <pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+Reveal.on( 'customevent', function() {
+	console.log( '"customevent" has fired' );
+} );
+					</code></pre>
+        </section>
+
+        <section>
+          <h2>Take a Moment</h2>
+          <p>
+            Press B or . on your keyboard to pause the presentation. This is
+            helpful when you're on stage and want to take distracting slides off
+            the screen.
+          </p>
+        </section>
+
+        <section>
+          <h2>Much more</h2>
+          <ul>
+            <li>Right-to-left support</li>
+            <li>
+              <a href="https://revealjs.com/api/">Extensive JavaScript API</a>
+            </li>
+            <li>
+              <a href="https://revealjs.com/auto-slide/">Auto-progression</a>
+            </li>
+            <li>
+              <a href="https://revealjs.com/backgrounds/#parallax-background"
+                >Parallax backgrounds</a
+              >
+            </li>
+            <li>
+              <a href="https://revealjs.com/keyboard/"
+                >Custom keyboard bindings</a
+              >
+            </li>
+          </ul>
+        </section>
+
+        <section style="text-align: left">
+          <h1>THE END</h1>
+          <p>
+            - <a href="https://slides.com">Try the online editor</a> <br />
+            -
+            <a href="https://github.com/hakimel/reveal.js"
+              >Source code &amp; documentation</a
+            >
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/search/search.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // Also available as an ES module, see:
+      // https://revealjs.com/initialization/
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [
+          RevealZoom,
+          RevealNotes,
+          RevealSearch,
+          RevealMarkdown,
+          RevealHighlight,
+        ],
+      });
+    </script>
+  </body>
 </html>
