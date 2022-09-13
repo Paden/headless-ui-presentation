@@ -47,7 +47,11 @@
 
       .list-boxed li {
         font-size: 26px;
-        display: inline-block;
+        background-color: #841a7a;
+        color: white;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
         list-style: none;
         min-width: 150px;
         padding: 15px;
@@ -174,20 +178,21 @@
 
           <ul class="fragment list-boxed">
             <li>Separtion of Concerns</li>
-            <li>Anticipation of Change</li>
             <li>Modularity</li>
             <li>Abstraction</li>
+            <li>Anticipate of Change</li>
             <li>Generality</li>
             <li>Consistency</li>
           </ul>
         </section>
 
+        <!-- SOC -->
         <section>
           <section
             data-transition-speed="fast"
             data-transition="convex-in fade-out"
           >
-            <h2>Separation of Concerns</h2>
+            <h3>Separation of Concerns</h3>
 
             <p class="small fragment fade-down" data-fragment-index="1">
               <q
@@ -224,18 +229,16 @@
 
           <section data-transition-speed="fast" data-transition="fade">
             <h3>Aspect-Oriented Programming</h3>
-            <div class="small">Cross-Cutting Concerns</div>
 
-            <hr class="fragment" data-fragment-index="1" />
-            <ul class="small fragment" data-fragment-index="1">
+            <ul class="list-boxed fragment">
               <li>Caching</li>
               <li>Data Validation</li>
               <li>Logging</li>
               <li>Security</li>
               <li>Monitoring</li>
               <li>Synchronization</li>
-              <li>Internationalization/Localization</li>
-              <li>Etc...</li>
+              <li>Internationalization</li>
+              <li>Localization</li>
             </ul>
           </section>
 
@@ -339,6 +342,86 @@ class Foo {
           </script>
 					</code></pre>
           </section>
+        </section>
+
+        <!-- Modularity -->
+        <section>
+          <h3>Modularity</h3>
+
+          <p>Responsibility-driven design</p>
+          <p class="fragment">
+            Software should be broken into components according to functionality
+            and responsibility.
+          </p>
+        </section>
+
+        <!-- Abstraction -->
+        <section>
+          <section>
+            <h3>Abstraction</h3>
+            <p class="fragment small">
+              Separating the behavior of software components from their
+              implementation
+            </p>
+            <p class="fragment small">
+              Latin root is "abstractus" which means “to draw away”.
+              <br />In other words,
+              <u>to hide!</u>
+            </p>
+            <aside class="notes">
+              Failure to separate behavior from implementation is a common cause
+              of unnecessary coupling.
+            </p>
+          </section>
+          <section>
+            <h4>Our profession is an abstraction on top of an abstraction on top of an abstraction...</h4>
+            <img width="500" src="https://images.unsplash.com/photo-1496784125602-40c13c017c0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2146&q=80" />
+            
+          </section>
+          <section>
+            <ul class="list-boxed">
+              <li class="fragment">Data hiding</li>
+              <li class="fragment">Control abstraction</li>
+              <li class="fragment">Classes/Interfaces</li>
+              <li class="fragment">Higher-order Components</li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- Anticipate of Change -->
+        <section>
+          <section>
+            <h3>Anticipate of Change</h3>
+  
+            <p>Software purpose is to automate a solution to a problem.</p>
+  
+            <aside class="notes">
+              - Developers are learning the domain from their client
+              - The clients are learning the extent that can be automated
+              - When those collide, there is change.
+            </aside>
+          </section>
+          <section>
+            <h3>Low Coupling</h3>
+            <p>Degree of interdependence between software components. Inter-module binding.</p>
+
+            <h3>High Cohesion</h3>
+            <p>Components that are easier to use when requirements change. Intra-module binding.</p>
+          </section>
+        </section>
+
+        <!-- Generality -->
+        <section>
+          <h3>Generality</h3>
+
+          <p>Designing software that is free from unnatural restrictions and limitations</p>
+        </section>
+
+        <!-- Consistency -->
+        <section>
+          <h3>Consistency</h3>
+
+          <p>Problem solving in a familiar manner.</p>
         </section>
       </div>
     </div>
